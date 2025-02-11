@@ -6,3 +6,4 @@ Ejemplo de salida funcion normal + funcion flecha
 
 Ejemplo de salida funcion con parametros
 ![alt text](image-2.png)
+
