@@ -1,13 +1,53 @@
-void main() {
-  // Lista de números enteros desordenados
-  List<int> numeros = [5, 3, 8, 1, 2, 7, 4, 10, 6, 9];
+import 'dart:io';
 
-  // Imprimir la lista original
-  print("Lista original: $numeros");
+void main() {
+  // Capturar datos de la lista
+  List<int> numeros = capturarDatos();
+
+  // Mostrar la lista original
+  print("\nLista original:");
+  mostrarElementos(numeros);
 
   // Ordenar la lista de menor a mayor
   numeros.sort();
 
-  // Imprimir la lista ordenada
-  print("Lista ordenada: $numeros");
+  // Mostrar la lista ordenada
+  print("\nLista ordenada de menor a mayor:");
+  mostrarElementos(numeros);
+}
+
+// Función para capturar datos de la lista
+List<int> capturarDatos() {
+  List<int> lista = [];
+  print("Ingrese los números uno por uno. Escriba 'fin' para terminar:");
+
+  while (true) {
+    String entrada = stdin.readLineSync()!.trim();
+
+    // Salir del bucle si el usuario escribe 'fin'
+    if (entrada.toLowerCase() == 'fin') {
+      break;
+    }
+
+    // Intentar convertir la entrada a un número entero
+    try {
+      int numero = int.parse(entrada);
+      lista.add(numero);
+    } catch (e) {
+      print("Entrada no válida. Por favor, ingrese un número entero o 'fin' para terminar.");
+    }
+  }
+
+  return lista;
+}
+
+// Función para mostrar los elementos de la lista
+void mostrarElementos(List<int> lista) {
+  if (lista.isEmpty) {
+    print("La lista está vacía.");
+  } else {
+    for (int i = 0; i < lista.length; i++) {
+      print("Posición ${i + 1}: ${lista[i]}");
+    }
+  }
 }
